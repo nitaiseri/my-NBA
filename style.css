@@ -1,0 +1,12 @@
+body{
+    background-color: gray;
+}
+
+main{
+    display: grid;
+    /* grid-template-rows: 1fr, 11fr; */
+}
+
+#search-bar{
+    display: grid;
+}
