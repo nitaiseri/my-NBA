@@ -1,4 +1,4 @@
-players = {players:[
+let players = {players:[
     {
         "first_name": "Kostas",
         "last_name": "Antetokounmpo",
@@ -120,9 +120,43 @@ players = {players:[
     }
 ]}
 
+const my_nba = MyNBA()
+players = {players: my_nba.getTeam()}
+
 const source = $('#personal-template').html();
 const template = Handlebars.compile(source);
 const newHTML = template(players);
 
 // append our new html to the page
-$('#players-card').append(newHTML);
+$('.cards').append(newHTML);
+
+$('#get-team').on('click')
+
+
+$('.material-card > .mc-btn-action').click(function () {
+    var card = $(this).parent('.material-card');
+    var icon = $(this).children('i');
+    icon.addClass('fa-spin-fast');
+
+    if (card.hasClass('mc-active')) {
+        card.removeClass('mc-active');
+
+        window.setTimeout(function() {
+            icon
+                .removeClass('fa-arrow-left')
+                .removeClass('fa-spin-fast')
+                .addClass('fa-bars');
+
+        }, 800);
+    } else {
+        card.addClass('mc-active');
+
+        window.setTimeout(function() {
+            icon
+                .removeClass('fa-bars')
+                .removeClass('fa-spin-fast')
+                .addClass('fa-arrow-left');
+
+        }, 800);
+    }
+});
