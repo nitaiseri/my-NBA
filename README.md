@@ -4,9 +4,8 @@ Small project (backend-frontend)
 
 
 Things to consider/ask:
-- CORS - options for solutions and allow all vs specific. fix when getting html from derver
 - Use leyout templates (alot of garbage how to adapt)
-- 
+- Why in the html need to specify a static file with full path
 
 Things to do:
 - Clean Head in the html

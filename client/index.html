@@ -25,7 +25,7 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <!-- <link href="styles.css" rel="stylesheet" /> -->
     <link rel="stylesheet" href="client/dist/material-cards.css">
-    <link rel="stylesheet" href="client/dist/style.css">
+    <link rel="stylesheet" href="client/dist/style.css?version=1">
 
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <title>My-NBA</title>
@@ -113,7 +113,10 @@
                     </h2>
                     <div class="mc-content">
                         <div class="img-container">
-                            <img class="img-responsive" src="{{img_url}}">
+                            <!-- <img class="img-responsive" src="client/Bunny-Space-Jam_2.jpg"> -->
+                            <!-- <img class="img-responsive" src="{{img_url}}"> -->
+                            <img class="img-responsive" src="{{img_url}}" onerror='this.onerror="Sorry, that player was not found. Please check the spelling."; this.src="client/Spacejam2-lola-bunny.jpg"' alt="">
+
                         </div>  
                         <div class="mc-description">
                             He has appeared in more than 100 films and television shows, including The Deer Hunter, Annie Hall, The Prophecy trilogy, The Dogs of War ...
