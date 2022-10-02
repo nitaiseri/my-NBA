@@ -2,20 +2,16 @@ from os import stat
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import Request, status, Response
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 import uvicorn
 import requests
 from player import Player
 
 
 app = FastAPI()
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
+app.mount("/client", StaticFiles(directory="client"), name="client")
 
 teams_id = {
     "lakers": "1610612747",
@@ -32,7 +28,7 @@ def get_players(data, team):
 
 @app.get('/')
 def root():
-    return "Server is up:)"
+    return FileResponse('./client/index.html')
 
 
 @app.get('/data/')
