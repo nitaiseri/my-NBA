@@ -1,10 +1,10 @@
 const MyNBA = function(){
     // Private variables
-    const _players=[];
+    let _players=[];
 
 
-    function newTeam(team) {
-        a = 1
+    async function newTeam(year, team) {
+        _players = await $.get(`http://localhost:8000/data/?year=${year}&team=${team}`);
     }
 
     function getTeam() {
