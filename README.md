@@ -11,6 +11,10 @@ Things to do:
 - Clean Head in the html
 - Images for those who dont have.
 - generic years options and error messages.
+- tests
+- stats
+- filter by BD
+- dream team
 
 Extra time:
 - Kobe

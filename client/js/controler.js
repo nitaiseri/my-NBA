@@ -139,14 +139,6 @@ let players = {players:[
 
 const my_nba = MyNBA();
 const renderer = Renderer();
-// players = {players: my_nba.getTeam()}
-
-// const source = $('#personal-template').html();
-// const template = Handlebars.compile(source);
-// const newHTML = template(players);
-
-// // append our new html to the page
-// $('.cards').append(newHTML);
 
 $('#get-team').on('click', function() {
     const year = $("#year").val();

@@ -9,6 +9,7 @@ class Player:
         self.team_id = player_obj["teamId"]
         self.jersey = player_obj["jersey"]
         self.position = player_obj["pos"]
+        self.birth_day = player_obj["dateOfBirthUTC"]
         self.img_url =  self.get_url()
 
     def get_url(self):
