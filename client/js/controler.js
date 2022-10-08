@@ -148,6 +148,8 @@ $('#get-team').on('click', function () {
     if (year == "YEAR" || team == "TEAM NAME") {
         return;
     }
+    $("#year").val("YEAR");
+    $("#team").val("TEAM NAME");
     my_nba.newTeam(year, team).then((result) => {
         players = { players: my_nba.getTeam() }
         renderer.render(players);
