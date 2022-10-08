@@ -20,6 +20,8 @@ teams_id = {
     "suns": "1610612756"
 }
 
+dream_team = []
+
 def get_players(data, team):
     raw_players = data["league"]["standard"]
     players = filter(lambda raw_player: raw_player["teamId"]== teams_id[team], raw_players)
@@ -36,6 +38,8 @@ def get_data(year, team):
     data = requests.get(f'http://data.nba.net/data/10s/prod/v1/{year}/players.json').json()
     players = get_players(data, team)
     return players
+
+# @app.get
 
 if __name__ == "__main__":
     uvicorn.run("server:app", host="0.0.0.0", port=8000,reload=True)
