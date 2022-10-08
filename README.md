@@ -12,9 +12,8 @@ Things to do:
 - generic years options and error messages.
 - tests - 60 min
 - stats - 60 min
-- filter by BD - 60 min
+<!-- - filter by BD - 60 min -->
 - dream team - 120 min
-- renderer reset values
 
 Extra time:
 - Kobe

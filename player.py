@@ -10,7 +10,9 @@ class Player:
         self.jersey = player_obj["jersey"]
         self.position = player_obj["pos"]
         self.birth_day = player_obj["dateOfBirthUTC"]
+        self.dream_team = False
         self.img_url =  self.get_url()
+
 
     def get_url(self):
         # if len(requests.get(f'https://nba-players.herokuapp.com/players/{self.last_name}/{self.first_name}')._content) == 60:

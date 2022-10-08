@@ -113,6 +113,14 @@
                             <i class="fa fa-shirt"></i>
                             {{jersey}}
                         </strong>
+                        <a class="mc-btn-action">
+                            {{#if dream_team}}
+                                <i class="fa-solid fa-minus"></i>
+                            {{/if}}
+                            {{#unless dream_team}}
+                                <i class="fa-solid fa-plus"></i>
+                            {{/unless}}
+                        </a>
                     </h2>
                     <div class="mc-content">
                         <div class="img-container">
