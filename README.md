@@ -23,3 +23,5 @@ My problems:
 - the bootstrap tamplate come with a lot of 
     things that i dont know
 - How to specify efficiently id's and classes.
+- Event handeler of dream team button.
+- Naming convention and the transit objects 'keys'

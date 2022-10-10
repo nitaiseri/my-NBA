@@ -8,12 +8,26 @@ const MyNBA = function(){
         _players = await $.get(`http://localhost:8000/data/?year=${year}&team=${team}`);
     }
 
+    function getPlayerById(id) {
+        return _players.find(player => player.person_id === id);
+    }
+
+    async function addToDreamTeam(id) {
+        const player = getPlayerById(id);
+        return await $.ajax({
+            type: "POST",
+            url: `http://localhost:8000/dream_team/add`,
+            data: JSON.stringify(player),
+            success: function(a){return}
+          })
+    }
+
     function getTeam() {
         if (!filtered) {
             return _players;
         }
         else {
-            return _players.filter(player => player.birth_day !== "");
+            return _players.filter(player => player.date_of_birthUTC !== "");
         }
     }
 
@@ -21,19 +35,26 @@ const MyNBA = function(){
         filtered = !filtered;
     }
 
-    function create_dream_team() {
+    function createDreamTeam() {
         dt_mode = !dt_mode;
     }
 
-    function get_mode(){
+    function getMode(){
         return dt_mode;
+    }
+
+    async function setDreamTeam() {
+        _players = await $.get(`http://localhost:8000/dream_team/`);
+        dt_mode = false
     }
 
     return {
         newTeam, 
         getTeam, 
         flipFilterMode,
-        create_dream_team, 
-        get_mode
+        createDreamTeam, 
+        getMode,
+        setDreamTeam,
+        addToDreamTeam
     };
 };

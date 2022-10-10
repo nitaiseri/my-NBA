@@ -7,6 +7,7 @@ from fastapi.responses import FileResponse
 import uvicorn
 import requests
 from player import Player
+from tools import json_under_to_camel
 
 
 app = FastAPI()
@@ -39,7 +40,14 @@ def get_data(year, team):
     players = get_players(data, team)
     return players
 
-# @app.get
+@app.get('/dream_team/')
+def get_dream_team():
+    return dream_team
+
+@app.post('/dream_team/add')
+async def add_player_to_dream_team(request: Request):
+    player = await request.json()
+    dream_team.append(Player(json_under_to_camel(player)))
 
 if __name__ == "__main__":
     uvicorn.run("server:app", host="0.0.0.0", port=8000,reload=True)

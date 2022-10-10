@@ -8,8 +8,8 @@ class Player:
         self.person_id = player_obj["personId"]
         self.team_id = player_obj["teamId"]
         self.jersey = player_obj["jersey"]
-        self.position = player_obj["pos"]
-        self.birth_day = player_obj["dateOfBirthUTC"]
+        self.pos = player_obj["pos"]
+        self.date_of_birthUTC = player_obj["dateOfBirthUTC"]
         self.dream_team = False
         self.img_url =  self.get_url()
 

@@ -12,7 +12,7 @@ $('#get-team').on('click', function () {
     $("#team").val("TEAM NAME");
     my_nba.newTeam(year, team).then((result) => {
         players = { players: my_nba.getTeam() }
-        renderer.render(players, my_nba.get_mode());
+        renderer.render(players, my_nba.getMode());
     })
 })
 
@@ -20,21 +20,22 @@ $('#get-team').on('click', function () {
 $('#filter').on('click', function () {
     my_nba.flipFilterMode();
     players = { players: my_nba.getTeam() }
-    renderer.render(players, my_nba.get_mode());
+    renderer.render(players, my_nba.getMode());
 })
 
 // Dream team
 $('#create-d-t').on('click', function () {
-    my_nba.create_dream_team();
+    my_nba.createDreamTeam();
     players = { players: my_nba.getTeam() }
-    renderer.render(players, my_nba.get_mode());
+    renderer.render(players, my_nba.getMode());
 })
 
 
 $('#display-d-t').on('click', function () {
-    console.log("d")
-    // players = { players: my_nba.getTeam() }
-    // renderer.render(players);
+    my_nba.setDreamTeam().then((result) => {
+        players = { players: my_nba.getTeam() }
+        renderer.render(players, my_nba.getMode());
+    })
 })
 
 $('#delete-d-t').on('click', function () {
@@ -48,6 +49,11 @@ $('#update-d-t').on('click', function () {
     // players = { players: my_nba.getTeam() }
     // renderer.render(players);
 })
+
+$($('body')).on('click', '.material-card .mc-btn-action', function () {
+    my_nba.addToDreamTeam($(this).find("p").text());
+
+});
 
 
 
