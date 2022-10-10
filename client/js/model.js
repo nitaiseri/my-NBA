@@ -48,6 +48,18 @@ const MyNBA = function(){
         dt_mode = false
     }
 
+    async function deleteDreamTeam() {
+        await $.ajax({
+            url: 'http://localhost:8000/dream_team/',
+            type: 'DELETE',
+            success: function(result) {
+                // Do something with the result
+            }
+        });
+        dt_mode = false;
+        _players = [];
+    }
+
     return {
         newTeam, 
         getTeam, 
@@ -55,6 +67,7 @@ const MyNBA = function(){
         createDreamTeam, 
         getMode,
         setDreamTeam,
-        addToDreamTeam
+        addToDreamTeam, 
+        deleteDreamTeam
     };
 };

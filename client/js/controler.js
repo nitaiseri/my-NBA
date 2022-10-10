@@ -39,9 +39,10 @@ $('#display-d-t').on('click', function () {
 })
 
 $('#delete-d-t').on('click', function () {
-    console.log("del")
-    // players = { players: my_nba.getTeam() }
-    // renderer.render(players);
+    my_nba.deleteDreamTeam().then((result) => {
+        players = { players: my_nba.getTeam() }
+        renderer.render(players, my_nba.getMode());
+    })
 })
 
 $('#update-d-t').on('click', function () {
