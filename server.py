@@ -51,6 +51,17 @@ async def add_player_to_dream_team(request: Request):
     dream_team.append(Player(json_under_to_camel(player)))
 
 @app.delete('/dream_team/')
+async def delete_player_from_dt(id):
+    index = None
+    for i, player in enumerate(dream_team):
+        if player.person_id == id:
+            index = i 
+            break
+    if index is not None:
+        del dream_team[index]
+
+
+@app.delete('/dream_team/')
 def delete_dream_team():
     dream_team.clear()
 

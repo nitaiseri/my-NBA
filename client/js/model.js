@@ -22,6 +22,15 @@ const MyNBA = function(){
           })
     }
 
+    async function removeFromDreamTeam(playeId) {
+        // const player = getPlayerById(id);
+        return await $.ajax({
+            type: "DELETE",
+            url: `http://localhost:8000/dream_team/?id=${playeId}`,
+            success: function(a){return}
+          })
+    }
+
     function getTeam() {
         if (!filtered) {
             return _players;
@@ -72,7 +81,8 @@ const MyNBA = function(){
         createDreamTeam, 
         getMode,
         setDreamTeam,
-        addToDreamTeam, 
+        addToDreamTeam,
+        removeFromDreamTeam,
         deleteDreamTeam,
         get_stats
     };

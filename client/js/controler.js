@@ -52,7 +52,20 @@ $('#update-d-t').on('click', function () {
 })
 
 $($('body')).on('click', '.dt-button', function () {
-    my_nba.addToDreamTeam($(this).closest(".material-card").find("p").first().text());
+    const card = $(this).parent('.material-card');
+    var icon = $(this).children('i');
+    const playerID = $(this).closest(".material-card").find("p").first().text();
+    if (icon.hasClass('fa-plus')) {
+        my_nba.addToDreamTeam(playerID);
+        icon
+        .removeClass('fa-plus')
+        .addClass('fa-minus');
+    } else {
+        my_nba.removeFromDreamTeam(playerID);
+        icon
+        .removeClass('fa-minus')
+        .addClass('fa-plus');
+    }
 });
 
 
