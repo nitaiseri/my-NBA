@@ -113,6 +113,7 @@
         {{#each players}}
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <article class="material-card Red">
+                    <p hidden>{{person_id}}</p>
                     <h2>
                         <span>{{first_name}} {{last_name}}</span>
                         <strong>
@@ -127,21 +128,15 @@
                             <img class="img-responsive" src="{{img_url}}" onerror='this.onerror="Sorry, that player was not found. Please check the spelling."; this.src="client/Spacejam2-lola-bunny.jpg"' alt="">
                         </div>  
                         <div class="mc-description">
-                            He has appeared in more than 100 films and television shows, including The Deer Hunter, Annie Hall, The Prophecy trilogy, The Dogs of War ...
+                            <h4>Stats</h4>
                         </div>
                     </div>
                     <a class="mc-btn-action">
                         <i class="fa fa-bars"></i>
                     </a>
-                    <div class="mc-footer">
-                        <!-- <h4>
-                            Social
-                        </h4>
-                        <a class="fa fa-fw fa-facebook"></a>
-                        <a class="fa fa-fw fa-twitter"></a>
-                        <a class="fa fa-fw fa-linkedin"></a>
-                        <a class="fa fa-fw fa-google-plus"></a> -->
-                    </div>
+                    <!-- <div class="mc-footer">
+                        
+                    </div> -->
                 </article>
             </div>
         {{/each}}
@@ -151,6 +146,7 @@
         {{#each players}}
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <article class="material-card Red">
+                    <p hidden>{{person_id}}</p>
                     <h2>
                         <span>{{first_name}} {{last_name}}</span>
                         <strong>
@@ -159,8 +155,7 @@
                             <i class="fa fa-shirt"></i>
                             {{jersey}}
                         </strong>
-                        <a class="mc-btn-action">
-                            <p hidden>{{person_id}}</p>
+                        <a class="dt-button mc-btn-action">
                             {{#if dream_team}}
                                 <i class="fa-solid fa-minus"></i>
                             {{/if}}
@@ -171,8 +166,6 @@
                     </h2>
                     <div class="mc-content">
                         <div class="img-container">
-                            <!-- <img class="img-responsive" src="client/Bunny-Space-Jam_2.jpg"> -->
-                            <!-- <img class="img-responsive" src="{{img_url}}"> -->
                             <img class="img-responsive" src="{{img_url}}" onerror='this.onerror="Sorry, that player was not found. Please check the spelling."; this.src="client/Spacejam2-lola-bunny.jpg"' alt="">
 
                         </div>  
@@ -184,13 +177,7 @@
                         <i class="fa fa-bars"></i>
                     </a>
                     <div class="mc-footer">
-                        <!-- <h4>
-                            Social
-                        </h4>
-                        <a class="fa fa-fw fa-facebook"></a>
-                        <a class="fa fa-fw fa-twitter"></a>
-                        <a class="fa fa-fw fa-linkedin"></a>
-                        <a class="fa fa-fw fa-google-plus"></a> -->
+                        <h4>Stats</h4>
                     </div>
                 </article>
             </div>

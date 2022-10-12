@@ -46,16 +46,14 @@ $('#delete-d-t').on('click', function () {
 })
 
 $('#update-d-t').on('click', function () {
-    console.log("u")
-    // players = { players: my_nba.getTeam() }
-    // renderer.render(players);
+    my_nba.createDreamTeam();
+    players = { players: my_nba.getTeam() }
+    renderer.render(players, my_nba.getMode());
 })
 
-$($('body')).on('click', '.material-card .mc-btn-action', function () {
-    my_nba.addToDreamTeam($(this).find("p").text());
-
+$($('body')).on('click', '.dt-button', function () {
+    my_nba.addToDreamTeam($(this).closest(".material-card").find("p").text());
 });
-
 
 
 
@@ -67,7 +65,6 @@ $($('body')).on('click', '.material-card > .mc-btn-action', function () {
 
     if (card.hasClass('mc-active')) {
         card.removeClass('mc-active');
-
         window.setTimeout(function () {
             icon
                 .removeClass('fa-arrow-left')
@@ -76,14 +73,16 @@ $($('body')).on('click', '.material-card > .mc-btn-action', function () {
 
         }, 800);
     } else {
+        player_id = $(this).closest(".material-card").find("p").text();
+        my_nba.get_stats(player_id).then((stats) => {
+            renderer.renderStats($(this).closest(".material-card").find(".mc-description")[0], stats);
+        });
         card.addClass('mc-active');
-
         window.setTimeout(function () {
             icon
                 .removeClass('fa-bars')
                 .removeClass('fa-spin-fast')
                 .addClass('fa-arrow-left');
-
         }, 800);
     }
 });

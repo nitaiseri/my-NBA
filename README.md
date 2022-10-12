@@ -12,8 +12,11 @@ Things to do:
 - generic years options and error messages.
 - tests - 60 min
 - stats - 60 min
+- REST
 <!-- - filter by BD - 60 min -->
-- dream team - 120 min
+<!-- - dream team - 120 min -->
+- double in draem team
+- limit number of dream team
 
 Extra time:
 - Kobe
@@ -25,3 +28,5 @@ My problems:
 - How to specify efficiently id's and classes.
 - Event handeler of dream team button.
 - Naming convention and the transit objects 'keys'
+
+

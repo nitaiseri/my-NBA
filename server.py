@@ -1,3 +1,4 @@
+from functools import cache
 from os import stat
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -7,6 +8,7 @@ from fastapi.responses import FileResponse
 import uvicorn
 import requests
 from player import Player
+from stats import Stats
 from tools import json_under_to_camel
 
 
@@ -33,7 +35,6 @@ def get_players(data, team):
 def root():
     return FileResponse('./client/index.html')
 
-
 @app.get('/data/')
 def get_data(year, team):
     data = requests.get(f'http://data.nba.net/data/10s/prod/v1/{year}/players.json').json()
@@ -41,7 +42,7 @@ def get_data(year, team):
     return players
 
 @app.get('/dream_team/')
-def get_dream_team():
+def get_dream_team(): 
     return dream_team
 
 @app.post('/dream_team/add')
@@ -52,6 +53,17 @@ async def add_player_to_dream_team(request: Request):
 @app.delete('/dream_team/')
 def delete_dream_team():
     dream_team.clear()
+
+@app.get('/stats/')
+def get_statistics(first_name, last_name):
+    stats = requests.get(f'https://nba-players.herokuapp.com/players-stats/{last_name}/{first_name}')
+    try:
+        stats.json()
+        return Stats(stats)
+    except:
+        return None
+
+    
 
 if __name__ == "__main__":
     uvicorn.run("server:app", host="0.0.0.0", port=8000,reload=True)

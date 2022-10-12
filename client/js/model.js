@@ -60,6 +60,11 @@ const MyNBA = function(){
         _players = [];
     }
 
+    async function get_stats(player_id) {
+        const player = getPlayerById(player_id)
+        return await $.get(`http://localhost:8000/stats/?first_name=${player["first_name"]}&last_name=${player["last_name"]}`);
+    }
+
     return {
         newTeam, 
         getTeam, 
@@ -68,6 +73,7 @@ const MyNBA = function(){
         getMode,
         setDreamTeam,
         addToDreamTeam, 
-        deleteDreamTeam
+        deleteDreamTeam,
+        get_stats
     };
 };

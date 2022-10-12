@@ -15,8 +15,18 @@ const Renderer = function() {
         $('.cards').append(newHTML);
     }
 
+    function renderStats(object, stats) {
+        for (const stat in stats){
+            let category = document.createElement("p");
+            let text = document.createTextNode(`${stat}: ${stats[stat]}`);
+            category.appendChild(text);
+            object.appendChild(category);
+        }
+    }
+
 
     return {
-        render
+        render, 
+        renderStats
     }
 }
