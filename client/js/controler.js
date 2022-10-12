@@ -52,7 +52,7 @@ $('#update-d-t').on('click', function () {
 })
 
 $($('body')).on('click', '.dt-button', function () {
-    my_nba.addToDreamTeam($(this).closest(".material-card").find("p").text());
+    my_nba.addToDreamTeam($(this).closest(".material-card").find("p").first().text());
 });
 
 

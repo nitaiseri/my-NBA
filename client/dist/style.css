@@ -58,6 +58,10 @@ main {
     text-decoration: none;
     display: block;
   }
+
+  .mc-description p {
+    margin: 0;
+  }
   
   /* Change color of dropdown links on hover */
   .dropdown-content .btn:hover {background-color: #ddd;}

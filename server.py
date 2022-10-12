@@ -1,6 +1,6 @@
-from functools import cache
+# from functools import cache
 from os import stat
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import Request, status, Response
 from fastapi.staticfiles import StaticFiles
@@ -54,16 +54,15 @@ async def add_player_to_dream_team(request: Request):
 def delete_dream_team():
     dream_team.clear()
 
-@app.get('/stats/')
+@app.get('/stats/', status_code=status.HTTP_200_OK)
 def get_statistics(first_name, last_name):
     stats = requests.get(f'https://nba-players.herokuapp.com/players-stats/{last_name}/{first_name}')
     try:
-        stats.json()
+        stats.raise_for_status()
+        stats = stats.json()
         return Stats(stats)
     except:
-        return None
-
-    
+        raise HTTPException(status_code=500)
 
 if __name__ == "__main__":
     uvicorn.run("server:app", host="0.0.0.0", port=8000,reload=True)
