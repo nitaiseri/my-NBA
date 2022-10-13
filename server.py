@@ -53,7 +53,7 @@ def get_data(year, team):
 def get_dream_team(): 
     return dream_team
 
-@app.post('/dream_team/add')
+@app.post('/dream_team/')
 async def add_player_to_dream_team(request: Request):
     player = await request.json()
     player = Player(json_under_to_camel(player))

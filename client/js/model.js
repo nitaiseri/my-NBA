@@ -25,7 +25,7 @@ const MyNBA = function(){
         const player = getPlayerById(id);
         return await $.ajax({
             type: "POST",
-            url: `http://localhost:8000/dream_team/add`,
+            url: `http://localhost:8000/dream_team/`,
             data: JSON.stringify(player),
             success: function(a){return}
           })

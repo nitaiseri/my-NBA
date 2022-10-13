@@ -35,6 +35,7 @@ $('#create-d-t').on('click', function () {
 
 
 $('#display-d-t').on('click', function () {
+    my_nba.setTeamName(`Dream Team`);
     my_nba.setDreamTeam().then((result) => {
         players = { players: my_nba.getTeam() }
         renderer.render(players, my_nba.getMode());
