@@ -1,8 +1,17 @@
 const MyNBA = function(){
     // Private variables
     let _players=[];
+    let teamName;
     let filtered = false;
     let dt_mode = false;
+
+    function setTeamName(name) {
+        teamName = name;
+    }
+
+    function getTeamName() {
+        return teamName;
+    }
 
     async function newTeam(year, team) {
         _players = await $.get(`http://localhost:8000/data/?year=${year}&team=${team}`);
@@ -26,7 +35,7 @@ const MyNBA = function(){
         // const player = getPlayerById(id);
         return await $.ajax({
             type: "DELETE",
-            url: `http://localhost:8000/dream_team/?id=${playeId}`,
+            url: `http://localhost:8000/dream_team/${playeId}`,
             success: function(a){return}
           })
     }
@@ -84,6 +93,8 @@ const MyNBA = function(){
         addToDreamTeam,
         removeFromDreamTeam,
         deleteDreamTeam,
-        get_stats
+        get_stats, 
+        setTeamName, 
+        getTeamName
     };
 };

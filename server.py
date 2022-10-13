@@ -25,10 +25,18 @@ teams_id = {
 
 dream_team = []
 
+def is_in_dream_team(id):
+    for player in dream_team:
+        if player.person_id == id:
+            return True
+    return False
+
 def get_players(data, team):
     raw_players = data["league"]["standard"]
     players = filter(lambda raw_player: raw_player["teamId"]== teams_id[team], raw_players)
     players = list(map(Player, players))
+    for player in players:
+        player.set_dream_team(is_in_dream_team(player.person_id))
     return players
 
 @app.get('/')
@@ -48,9 +56,11 @@ def get_dream_team():
 @app.post('/dream_team/add')
 async def add_player_to_dream_team(request: Request):
     player = await request.json()
-    dream_team.append(Player(json_under_to_camel(player)))
+    player = Player(json_under_to_camel(player))
+    player.set_dream_team(True)
+    dream_team.append(player)
 
-@app.delete('/dream_team/')
+@app.delete('/dream_team/{id}')
 async def delete_player_from_dt(id):
     index = None
     for i, player in enumerate(dream_team):

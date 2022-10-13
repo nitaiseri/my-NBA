@@ -1,7 +1,7 @@
 const Renderer = function() {
 
     function render(players, dt_mode) {
-        $(".cards").empty();
+        renderHeader(my_nba.getTeamName());
         let source;
         if (dt_mode){
             source = $('#personal-dt-template').html();
@@ -13,6 +13,13 @@ const Renderer = function() {
     
         // append our new html to the page
         $('.cards').append(newHTML);
+    }
+
+    function renderHeader(header){
+        let head = document.createElement("h1");
+        let text = document.createTextNode(header);
+        head.appendChild(text);
+        $(".page-header")[0].appendChild(head);
     }
 
     function renderStats(object, stats) {

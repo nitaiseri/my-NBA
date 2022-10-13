@@ -1,6 +1,8 @@
 const my_nba = MyNBA();
 const renderer = Renderer();
 
+$(".dropbtn").on('click', function(){});
+
 //  Get team
 $('#get-team').on('click', function () {
     const year = $("#year").val();
@@ -10,6 +12,7 @@ $('#get-team').on('click', function () {
     }
     $("#year").val("YEAR");
     $("#team").val("TEAM NAME");
+    my_nba.setTeamName(`${team} - ${year}`);
     my_nba.newTeam(year, team).then((result) => {
         players = { players: my_nba.getTeam() }
         renderer.render(players, my_nba.getMode());

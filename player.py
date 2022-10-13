@@ -16,4 +16,6 @@ class Player:
     def get_url(self):
         return f"https://nba-players.herokuapp.com/players/{self.last_name}/{self.first_name}"
 
+    def set_dream_team(self, dt):
+        self.dream_team = dt
         
