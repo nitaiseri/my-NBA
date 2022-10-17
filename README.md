@@ -3,7 +3,6 @@ Small project (backend-frontend)
 
 Must:
 - tests - 60 min
-- status code errors
 - teams and years
 
 Small things to improve the project if time pemittes:
@@ -13,7 +12,6 @@ Small things to improve the project if time pemittes:
 - generic years options and error messages.
 - stats desine
 - REST
-- double in draem team
 - limit number of dream team
 - Kobe
 - Team background and colors

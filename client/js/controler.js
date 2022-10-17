@@ -1,8 +1,6 @@
 const my_nba = MyNBA();
 const renderer = Renderer();
 
-$(".dropbtn").on('click', function(){});
-
 //  Get team
 $('#get-team').on('click', function () {
     const year = $("#year").val();
@@ -17,6 +15,11 @@ $('#get-team').on('click', function () {
         players = { players: my_nba.getTeam() }
         renderer.render(players, my_nba.getMode());
     })
+})
+
+// Kobe
+$('#kobe').on('click', function () {
+    window.location.href = 'https://youtu.be/guMmZrnFx70?t=441';
 })
 
 // Filter
@@ -62,17 +65,15 @@ $($('body')).on('click', '.dt-button', function () {
     if (icon.hasClass('fa-plus')) {
         my_nba.addToDreamTeam(playerID);
         icon
-        .removeClass('fa-plus')
-        .addClass('fa-minus');
+            .removeClass('fa-plus')
+            .addClass('fa-minus');
     } else {
         my_nba.removeFromDreamTeam(playerID);
         icon
-        .removeClass('fa-minus')
-        .addClass('fa-plus');
+            .removeClass('fa-minus')
+            .addClass('fa-plus');
     }
 });
-
-
 
 // Display stats
 $($('body')).on('click', '.material-card > .mc-btn-action', function () {

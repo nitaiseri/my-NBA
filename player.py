@@ -1,5 +1,3 @@
-import requests
-
 class Player:
 
     def __init__(self, player_obj) -> None:

@@ -1,7 +1,7 @@
-const MyNBA = function(){
+const MyNBA = function () {
     // Private variables
-    let _players=[];
-    let teamName;
+    let _players = [];
+    let teamName = "";
     let filtered = false;
     let dt_mode = false;
 
@@ -14,7 +14,7 @@ const MyNBA = function(){
     }
 
     async function newTeam(year, team) {
-        _players = await $.get(`http://localhost:8000/data/?year=${year}&team=${team}`);
+        _players = await $.get(`http://localhost:8000/players/?year=${year}&team=${team}`);
     }
 
     function getPlayerById(id) {
@@ -27,17 +27,16 @@ const MyNBA = function(){
             type: "POST",
             url: `http://localhost:8000/dream_team/`,
             data: JSON.stringify(player),
-            success: function(a){return}
-          })
+            success: function (a) { return }
+        })
     }
 
     async function removeFromDreamTeam(playeId) {
-        // const player = getPlayerById(id);
         return await $.ajax({
             type: "DELETE",
             url: `http://localhost:8000/dream_team/${playeId}`,
-            success: function(a){return}
-          })
+            success: function (a) { return }
+        })
     }
 
     function getTeam() {
@@ -54,10 +53,11 @@ const MyNBA = function(){
     }
 
     function createDreamTeam() {
+        $("#create-d-t").prop("disabled", true);
         dt_mode = !dt_mode;
     }
 
-    function getMode(){
+    function getMode() {
         return dt_mode;
     }
 
@@ -70,10 +70,11 @@ const MyNBA = function(){
         await $.ajax({
             url: 'http://localhost:8000/dream_team/',
             type: 'DELETE',
-            success: function(result) {
+            success: function (result) {
                 // Do something with the result
             }
         });
+        $("#create-d-t").prop("disabled", false);
         dt_mode = false;
         _players = [];
     }
@@ -84,17 +85,17 @@ const MyNBA = function(){
     }
 
     return {
-        newTeam, 
-        getTeam, 
+        newTeam,
+        getTeam,
         flipFilterMode,
-        createDreamTeam, 
+        createDreamTeam,
         getMode,
         setDreamTeam,
         addToDreamTeam,
         removeFromDreamTeam,
         deleteDreamTeam,
-        get_stats, 
-        setTeamName, 
+        get_stats,
+        setTeamName,
         getTeamName
     };
 };

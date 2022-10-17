@@ -1,5 +1,3 @@
-import requests
-
 class Stats:
 
     def __init__(self, stats_obj) -> None:
