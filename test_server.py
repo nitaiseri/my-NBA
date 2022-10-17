@@ -14,17 +14,14 @@ def test_get_team():
 
 def test_bad_get_team():
     response = client.get("/players/?year=2018&team=bla")
-    assert response.status_code == 404, "get invalid team"
+    assert response.status_code == 404, "accept invalid team"
 
-test_bad_get_team()
-
-# def test_get_dream_team():
-#     response = client.get("/")
-
+def test_get_dream_team():
+    response = client.get("/dream_team/")
+    assert response.status_code == 200
 
 # def test_add_player_to_dream_team():
 #     response = client.get("/")
-
 
 # def test_remove_player_to_dream_team():
 #     response = client.get("/")

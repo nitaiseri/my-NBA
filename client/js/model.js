@@ -14,7 +14,22 @@ const MyNBA = function () {
     }
 
     async function newTeam(year, team) {
-        _players = await $.get(`http://localhost:8000/players/?year=${year}&team=${team}`);
+        try{
+            await $.ajax({
+                url: `http://localhost:8000/players/?year=${year}&team=${team}`,
+                type: 'GET',
+                success: function(data){ 
+                    _players = data;
+                }
+                // error: function(data) {
+                //     _players = []
+                //     teamName += " - Sorry, no data on this team."
+                // }
+            });
+        }catch{
+            _players = []
+            teamName += " - Sorry, no data on this team."
+        }
     }
 
     function getPlayerById(id) {

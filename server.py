@@ -43,8 +43,8 @@ def get_players(data, team):
         player.set_dream_team(is_in_dream_team(player.person_id))
     return players
 
-# def input_validation_for_team(year, team)
-
+def is_team_valid(team):
+    return team in teams_id.keys()
 
 # Routes
 
@@ -54,16 +54,19 @@ def root():
 
 @app.get('/players/', status_code=status.HTTP_200_OK)
 def get_data(year, team):
-    data = requests.get(f'http://data.nba.net/data/10s/prod/v1/{year}/players.json')
+    data = None
     try:
+        if not is_team_valid(team):
+            raise HTTPException(status_code=404, detail="Invalid parameters")
+        data = requests.get(f'http://data.nba.net/data/10s/prod/v1/{year}/players.json')
         data.raise_for_status()
         data = data.json()
         players = get_players(data, team)
         return players
     except:
-        if data.status_code == 404:
+        if data and data.status_code == 404:
             raise HTTPException(status_code=data.status_code)
-        raise HTTPException(status_code=data.status_code, detail="Invalid parameters")
+        raise HTTPException(status_code=404, detail="Invalid parameters")
 
 @app.get('/dream_team/', status_code=status.HTTP_200_OK)
 def get_dream_team(): 
